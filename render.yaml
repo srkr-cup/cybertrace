@@ -16,21 +16,7 @@ services:
           name: cybertrace-ai-db
           property: connectionString
       - key: FRONTEND_ORIGINS
-        value: https://cybertrace-ai-web.onrender.com
-
-  - type: web
-    name: cybertrace-ai-web
-    runtime: static
-    rootDir: frontend
-    buildCommand: npm ci && npm run build
-    staticPublishPath: ./dist
-    envVars:
-      - key: VITE_API_URL
-        value: https://cybertrace-ai-api.onrender.com
-    routes:
-      - type: rewrite
-        source: /*
-        destination: /index.html
+        sync: false
 
 databases:
   - name: cybertrace-ai-db

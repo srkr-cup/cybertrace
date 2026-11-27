@@ -44,7 +44,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const logout = () => {
     const refreshToken = localStorage.getItem("ct_refresh");
     if (refreshToken) {
-      fetch(`${(import.meta as any).env.VITE_API_URL || "http://localhost:8008"}/api/auth/logout`, {
+      const apiBase = (import.meta as any).env.VITE_API_URL || "http://127.0.0.1:8022";
+      fetch(`${apiBase}/api/auth/logout`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ refresh_token: refreshToken }),

@@ -1,4 +1,4 @@
-const BASE = import.meta.env.VITE_API_URL || "http://localhost:8008";
+const BASE = import.meta.env.VITE_API_URL || "http://127.0.0.1:8022";
 
 function authHeader(): Record<string, string> {
   const token = localStorage.getItem("ct_token");

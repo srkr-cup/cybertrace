@@ -5,10 +5,11 @@ from sqlalchemy.orm import sessionmaker
 
 from .models import Base
 
-# Defaults to local SQLite for zero-setup development. For production, set:
-#   DATABASE_URL=postgresql+psycopg2://user:password@host:5432/cybertrace
-# No model or query changes are needed either way — SQLAlchemy abstracts it.
 DATABASE_URL = os.environ.get("DATABASE_URL", "sqlite:///./cybertrace.db")
+if DATABASE_URL.startswith("postgres://"):
+    DATABASE_URL = DATABASE_URL.replace("postgres://", "postgresql+psycopg2://", 1)
+elif DATABASE_URL.startswith("postgresql://"):
+    DATABASE_URL = DATABASE_URL.replace("postgresql://", "postgresql+psycopg2://", 1)
 
 connect_args = {"check_same_thread": False} if DATABASE_URL.startswith("sqlite") else {}
 engine = create_engine(DATABASE_URL, connect_args=connect_args, pool_pre_ping=True)
