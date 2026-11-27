@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter, Routes, Route, NavLink, Navigate } from "react-router-dom";
+import { Analytics } from "@vercel/analytics/react";
 import "./index.css";
 import Dashboard from "./pages/Dashboard";
 import Correlation from "./pages/Correlation";
@@ -114,6 +115,7 @@ function App() {
           }
         />
       </Routes>
+      <Analytics />
     </BrowserRouter>
   );
 }
