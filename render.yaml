@@ -21,5 +21,4 @@ services:
 databases:
   - name: cybertrace-ai-db
     region: oregon
-    plan: 0.1c-256mb
-    diskSizeGB: 1
+    plan: free
